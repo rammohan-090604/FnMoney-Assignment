@@ -1,10 +1,31 @@
 {
-    "version" : 2,
-    "builds" : [{
-        "src" : "index.js",
-        "use" : "@now/node-server"
-    }],
-    "vercel/node": {
-        "builder": [{ "src" : "/(.*)", "dest" : "/" }]
+    "version": 2,
+    "builds": [
+      {
+        "src": "client/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "build"
+        }
+      },
+      {
+        "src": "server/server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "server/server.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "client/build/$1"
+      }
+    ],
+    "env": {
+      "JWT_SECRET": "@jwt_secret",
+      "DATABASE_URL": "@database_url"
     }
-}
+  }
+  
