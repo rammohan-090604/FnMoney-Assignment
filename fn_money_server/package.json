@@ -16,7 +16,8 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "vercel": "^35.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
